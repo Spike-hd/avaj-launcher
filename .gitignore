@@ -1,0 +1,4 @@
+out/
+*.class
+sources.txt
+simulation.txt

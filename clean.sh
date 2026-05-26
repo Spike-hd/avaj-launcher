@@ -1,4 +1,4 @@
 #!/bin/sh
 
 find . -name '*.class' -delete
-rm simulation.txt sources.txt
+rm -rf out simulation.txt sources.txt

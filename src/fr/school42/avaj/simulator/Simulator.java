@@ -55,7 +55,8 @@ public class Simulator {
                 while ((line = reader.readLine()) != null) {
                     lineNumber++;
                     if (line.trim().isEmpty()) {
-                        continue; 
+                        System.out.println("Error: Empty line at line " + lineNumber);
+                        System.exit(1);
                     }
 
                     String[] aircraftAttributes = line.trim().split("\\s+"); // On split par les espaces
@@ -78,11 +79,18 @@ public class Simulator {
                         int latitude = Integer.parseInt(aircraftAttributes[3]);
                         int height = Integer.parseInt(aircraftAttributes[4]);
 
-                        if (height > 100) { height = 100;}
-
-                        if (longitude < 0 || latitude < 0 || height < 0) {
-                            System.out.println("Error: Coordinates must be positive numbers at line " + lineNumber);
+                        if (longitude <= 0 || latitude <= 0) {
+                            System.out.println("Error: Longitude and latitude must be positive numbers at line " + lineNumber);
                             System.exit(1);
+                        }
+
+                        if (height < 0) {
+                            System.out.println("Error: Height must be between 0 and 100 at line " + lineNumber);
+                            System.exit(1);
+                        }
+
+                        if (height > 100) {
+                            height = 100;
                         }
 
                         // Utilisation de la Factory pour créer l'appareil

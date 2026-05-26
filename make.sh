@@ -1,5 +1,8 @@
 #!/bin/sh
 
-find . -name "*.java" > sources.txt
-javac -sourcepath . @sources.txt
-java ua.unit.avaj.Simulator scenario.txt
+set -e
+
+find src -name "*.java" > sources.txt
+mkdir -p out
+javac -sourcepath src -d out @sources.txt
+java -cp out fr.school42.avaj.simulator.Simulator scenario.txt
