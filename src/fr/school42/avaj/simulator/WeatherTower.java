@@ -1,6 +1,6 @@
 package fr.school42.avaj.simulator;
 
-import fr.school42.avaj.simulator.aicraft.Coordinates;
+import fr.school42.avaj.simulator.aircraft.Coordinates;
 
 public class WeatherTower extends Tower {
     
@@ -8,7 +8,7 @@ public class WeatherTower extends Tower {
         return WeatherProvider.getProvider().getCurrentWeather(p_coordinates);
     }
 
-    void changeWeather() {
+    public void changeWeather() {
         this.conditionsChanged();
     }
 }

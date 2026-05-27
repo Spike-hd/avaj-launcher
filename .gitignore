@@ -2,3 +2,4 @@ out/
 *.class
 sources.txt
 simulation.txt
+scenario.txt

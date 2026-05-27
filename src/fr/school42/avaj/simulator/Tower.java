@@ -1,7 +1,7 @@
 package fr.school42.avaj.simulator;
 
-import fr.school42.avaj.simulator.aicraft.Aircraft;
-import fr.school42.avaj.simulator.aicraft.Flyable;
+import fr.school42.avaj.simulator.aircraft.Aircraft;
+import fr.school42.avaj.simulator.aircraft.Flyable;
 import java.util.ArrayList;
 import java.util.List;
 

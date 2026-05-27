@@ -10,7 +10,6 @@ public class SimulatorLogger {
 
     public static void openFile() {
         try {
-            // FileWriter sans 'true' crée un nouveau fichier ou l'écrase
             writer = new BufferedWriter(new FileWriter(FILE_NAME));
         } catch (IOException e) {
             System.out.println("Error: Could not open " + FILE_NAME + " for writing, probably error permissions.");

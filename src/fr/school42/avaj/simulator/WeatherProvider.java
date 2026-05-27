@@ -1,19 +1,13 @@
 package fr.school42.avaj.simulator;
 
-import fr.school42.avaj.simulator.aicraft.Coordinates;
+import fr.school42.avaj.simulator.aircraft.Coordinates;
 
 public class WeatherProvider {
-    // 2. L'instance unique ("static" veut dire lié à la classe entière)
-    private static final WeatherProvider weatherProvider = new WeatherProvider();
-    
-    // Le tableau des 4 météos possibles
     private static final String[] weather = {"RAIN", "FOG", "SUN", "SNOW"};
+    private static final WeatherProvider weatherProvider = new WeatherProvider();
 
-    // 1. Constructeur privé (personne d'autre ne peut l'appeler)
-    private WeatherProvider() {
-    }
+    private WeatherProvider() {}
 
-    // 3. L'unique point d'accès pour récupérer le gestionnaire de météo
     public static WeatherProvider getProvider() {
         return weatherProvider;
     }

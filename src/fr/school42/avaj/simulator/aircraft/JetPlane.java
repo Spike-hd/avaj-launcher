@@ -1,11 +1,10 @@
-package fr.school42.avaj.simulator.aicraft;
+package fr.school42.avaj.simulator.aircraft;
 
 import fr.school42.avaj.simulator.SimulatorLogger;
 
-public class Balloon extends Aircraft {
-
-    public Balloon(long p_id, String p_name, Coordinates p_coordinates) {
-        super(0, p_name, p_coordinates);
+public class JetPlane extends Aircraft {
+    public JetPlane(long p_id, String p_name, Coordinates p_coordinates) {
+        super(p_id, p_name, p_coordinates);
     }
 
     @Override
@@ -19,21 +18,21 @@ public class Balloon extends Aircraft {
 
         switch (weather) {
             case "SUN" -> {
-                longitude += 2;
-                height += 4;
+                latitude += 10;
+                height += 2;
                 message = "Sunny day, let's enjoy the good weather and take some pics.";
             }
             case "RAIN" -> {
-                height -= 5;
+                latitude += 5;
                 message = "Rain is falling. We might get wet. Better watch out for lightings.";
             }
             case "FOG" -> {
-                height -= 3;
+                latitude += 1;
                 message = "The visibility is low, we need to proceed with caution!";
             }
             case "SNOW" -> {
-                height -= 15;
-                message = "It's snowing. Our balloon is going to crash !! Mayday ! Mayday !";
+                height -= 7;
+                message = "It's snowing. Our JetPlane is going to crash !! Mayday ! Mayday !";
             }
         }
 
@@ -41,12 +40,11 @@ public class Balloon extends Aircraft {
         
         this.coordinates = new Coordinates(longitude, latitude, height);
 
-        SimulatorLogger.log("Balloon#" + this.name + "(" + this.id + "): " + message);
+        SimulatorLogger.log("JetPlane#" + this.name + "(" + this.id + "): " + message);
 
         if (this.coordinates.getHeight() <= 0) {
-            SimulatorLogger.log("Balloon#" + this.name + "(" + this.id + ") landing.");
+            SimulatorLogger.log("JetPlane#" + this.name + "(" + this.id + ") landing.");
             this.weatherTower.unregister(this);
         }
     }
-
 }

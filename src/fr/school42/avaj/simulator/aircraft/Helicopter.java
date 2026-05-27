@@ -1,4 +1,4 @@
-package fr.school42.avaj.simulator.aicraft;
+package fr.school42.avaj.simulator.aircraft;
 
 import fr.school42.avaj.simulator.SimulatorLogger;
 

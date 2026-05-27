@@ -1,13 +1,12 @@
 package fr.school42.avaj.simulator;
 
-import fr.school42.avaj.simulator.aicraft.*;
+import fr.school42.avaj.simulator.aircraft.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
 public class Simulator {
     public static void main(String[] args) {
-        // Étape 1 : Vérifier qu'on a bien donné un fichier en argument
         if (args.length != 1) {
             System.out.println("Usage: java Simulator <scenario.txt>");
             System.exit(1);
@@ -16,10 +15,8 @@ public class Simulator {
         String scenarioFile = args[0];
 
         try {
-            // Étape 2 : Préparer le fichier de sortie simulation.txt
             SimulatorLogger.openFile();
 
-            // Étape 3 : Ouvrir le fichier texte d'entrée (scenario.txt) pour le lire via try-with-resources
             java.io.File file = new java.io.File(scenarioFile);
             if (!file.exists() || !file.canRead()) {
                 System.out.println("Error: Cannot read file " + scenarioFile);
@@ -34,7 +31,6 @@ public class Simulator {
                     System.exit(1);
                 }
                 
-                // Étape 4 : Lire la première ligne (le nombre de tours de la simulation)
                 int simulations = 0;
                 try {
                     simulations = Integer.parseInt(line.trim());
@@ -47,10 +43,8 @@ public class Simulator {
                     System.exit(1);
                 }
 
-                // Étape 5 : Créer la tour de contrôle
                 WeatherTower weatherTower = new WeatherTower();
 
-                // Étape 6 : Lire les lignes suivantes (les aéronefs à créer)
                 int lineNumber = 1;
                 while ((line = reader.readLine()) != null) {
                     lineNumber++;
@@ -84,13 +78,9 @@ public class Simulator {
                             System.exit(1);
                         }
 
-                        if (height < 0) {
+                        if (height < 0 || height > 100) {
                             System.out.println("Error: Height must be between 0 and 100 at line " + lineNumber);
                             System.exit(1);
-                        }
-
-                        if (height > 100) {
-                            height = 100;
                         }
 
                         // Utilisation de la Factory pour créer l'appareil
@@ -106,19 +96,16 @@ public class Simulator {
                     }
                 }
 
-                // Étape 7 : Lancer la simulation (Le Moteur du jeu)
                 for (int i = 0; i < simulations; i++) {
                     weatherTower.changeWeather();
                 }
-            } // Fin du try-with-resources: reader est fermé proprement ici
+            }
 
         } catch (IOException e) {
             System.out.println("Error: Cannot read file " + scenarioFile);
         } catch (NumberFormatException e) {
-            // Si la première ligne n'est pas un chiffre valide
             System.out.println("Error: Invalid number format in file.");
         } finally {
-            // Étape 8 : On ferme le fichier de log quoiqu'il arrive à la fin
             SimulatorLogger.closeFile();
         }
     }

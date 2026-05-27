@@ -1,15 +1,10 @@
-package fr.school42.avaj.simulator.aicraft;
+package fr.school42.avaj.simulator.aircraft;
 
 public class AircraftFactory {
-    
-    // 1. Instance statique unique
     private static AircraftFactory factory = new AircraftFactory();
     
-    // 2. Constructeur privé pour empêcher l'instanciation depuis l'extérieur
-    private AircraftFactory() {
-    }
+    private AircraftFactory() {}
     
-    // 3. Méthode publique pour récupérer le singleton (même si l'UML ne force pas de pattern particulier, c'est classique)
     private static AircraftFactory getFactory() {
         return factory;
     }
